@@ -9,11 +9,6 @@ const courses = [
     {id : 3 , name : 'php'},
 ]
 
-
-app.get('/',(req,res) =>{
-    res.send('abcdefg');
-});
-
 app.get('/api/courses',(req,res) =>{
     res.send(courses);
 });
