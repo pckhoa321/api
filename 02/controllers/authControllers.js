@@ -107,7 +107,7 @@ const authController = {
 
         if(!refreshToken) return res.status(401).json("you're not authecation");
         if(!refreshTokens.includes(refreshToken)){
-            return res.status(403).json("refresh token is not vaild");
+            return res.status(403).json("refresh token is not valid");
         }
         jwt.verify(refreshToken,process.env.REFRESH_KEY, (err,user) =>{
             if(err){
