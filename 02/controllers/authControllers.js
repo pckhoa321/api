@@ -104,7 +104,7 @@ const authController = {
     requestRefreshToken: async(req,res) =>{
         //take refresh token from user
         const refreshToken = req.cookies.refreshToken;
-        res.status(200).json(refreshToken);
+
         if(!refreshToken) return res.status(401).json("you're not authecation");
         if(!refreshTokens.includes(refreshToken)){
             return res.status(403).json("refresh token is not vaild");
@@ -124,7 +124,7 @@ const authController = {
                 path: "/",
                 sameSite: "strict",
             });
-            res.status(200).json({accessToken: newAccessToken});
+            return res.status(200).json({accessToken: newAccessToken});
         });
     },
 
@@ -133,7 +133,7 @@ const authController = {
     userLogout :async(req,res) =>{
         res.clearCookie("refreshToken");
         refreshTokens = refreshTokens.filter(token => token !== req.cookies.refreshToken);
-        res.status(200).json("logged out");
+        return res.status(200).json("logged out");
     }
 };
 

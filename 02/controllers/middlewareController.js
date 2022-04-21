@@ -10,7 +10,7 @@ const middlewareController = {
             const accessToken = token.split(" ")[1];
             jwt.verify(accessToken, process.env.PRIVATE_KEY,(err,user) =>{
                 if(err){
-                  return  res.status(403).json("token is not vaild");
+                  return res.status(403).json("token is not vaild");
                 }
                 req.user = user;
                 next();
