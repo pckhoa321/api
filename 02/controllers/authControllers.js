@@ -65,25 +65,9 @@ const authController = {
             }
             if(user && validPassword){
                 const accessToken = authController.generateAccessToken(user);
-                // const accessToken = jwt.sign({
-                //     id: user.id,
-                //     admin: user.admin
-                // },
-                // process.env.PRIVATE_KEY,
-                // {
-                //     expiresIn: "60s"
-                // }
-                // );
+                
                 const refreshToken = authController.generateRefreshToken(user);
-                // const refreshToken = jwt.sign({
-                //     id: user.id,
-                //     admin: user.admin
-                // },
-                // process.env.REFRESH_KEY,
-                // {
-                //     expiresIn: "365d"
-                // }
-                // );
+                
                 refreshTokens.push(refreshToken);
                 res.cookie("refreshToken", refreshToken, {
                     httpOnly: true,
