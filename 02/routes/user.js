@@ -8,6 +8,6 @@ const router =require("express").Router();
 router.get("/",middlewareController.verifyToken, userController.getAllusers);
 
 //delete user
-router.delete("/:id" /*,middlewareController.verifyTokenAndAdminAuth*/,userController.deleteUser);
+router.delete("/:id" ,middlewareController.verifyTokenAndAdminAuth,userController.deleteUser);
 
 module.exports = router;

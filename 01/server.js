@@ -9,13 +9,14 @@ const courses = [
     {id : 3 , name : 'php'},
 ]
 
-
-app.get('/',(req,res) =>{
-    res.send('abcdefg');
-});
-
 app.get('/api/courses',(req,res) =>{
     res.send(courses);
+});
+
+app.get('/api/courses/:id', (req, res) => {
+    const course = courses.find(courses => courses.id == parseInt(req.params.id))
+    if(!courses) res.status(404).send('id khong ton tai')
+    res.send(course);
 });
 
 app.post('/api/courses/add', (req, res) =>{
@@ -26,7 +27,7 @@ app.post('/api/courses/add', (req, res) =>{
     courses.push(course)
     res.send(JSON.stringify({
         success : true,
-        notice : "load success",
+        notice : "them thanh cong",
         data : courses
     }));
 });
