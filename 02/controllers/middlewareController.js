@@ -10,7 +10,7 @@ const middlewareController = {
             const accessToken = token.split(" ")[1];
             jwt.verify(accessToken, process.env.PRIVATE_KEY,(err,user) =>{
                 if(err){
-                  return res.status(403).json("token is not vaild");
+                  return res.status(403).json("ma token khong ton tai");
                 }
                 req.user = user;
                 next();
@@ -27,7 +27,7 @@ const middlewareController = {
                 next();
             }
             else{
-               return res.status(403).json("you're not allowed to delete other");
+               return res.status(403).json("ban khong duoc phep xoa nguoi khac");
             }
         });
     },
