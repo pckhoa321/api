@@ -111,14 +111,6 @@ const authController = {
             return res.status(200).json({accessToken: newAccessToken});
         });
     },
-
-
-    //log out
-    userLogout :async(req,res) =>{
-        res.clearCookie("refreshToken");
-        refreshTokens = refreshTokens.filter(token => token !== req.cookies.refreshToken);
-        return res.status(200).json("logged out");
-    }
 };
 
 module.exports = authController;
